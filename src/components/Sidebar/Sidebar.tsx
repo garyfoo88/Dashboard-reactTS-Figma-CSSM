@@ -1,7 +1,18 @@
 import styles from "./Sidebar.module.scss";
 import samanthaImg from "../../assets/png/samantha.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
+const sidebarNavLinks = [
+  "dashboard",
+  "expenses",
+  "wallets",
+  "summary",
+  "accounts",
+  "settings",
+];
+
 export default function Sidebar() {
+  const location = useLocation();
   return (
     <>
       <aside className={styles.sidebar}>
@@ -16,9 +27,23 @@ export default function Sidebar() {
           </div>
           <nav className={styles.sidebarNav}>
             <ul>
-              <li className={styles.sidebarNavItem}>
-                <Link to="/dashboard">Dashboard</Link>
-              </li>
+              {sidebarNavLinks.map((sidebarNavLink) => {
+                return (
+                  <li className={styles.sidebarNavItem} key={sidebarNavLink}>
+                    <Link
+                      className={
+                        location.pathname === `/${sidebarNavLink}`
+                          ? styles.sidebarNavLinkActive
+                          : styles.sidebarNavLink
+                      }
+                      to={`/${sidebarNavLink}`}
+                    >
+                      {sidebarNavLink.charAt(0).toUpperCase() +
+                        sidebarNavLink.slice(1)}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
         </div>
