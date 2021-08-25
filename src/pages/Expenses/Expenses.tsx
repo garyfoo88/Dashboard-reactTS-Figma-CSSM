@@ -70,10 +70,9 @@ export default function Expenses() {
                   <div className={styles.expenseItemDiv}>
                     <img src={cartIcon} alt="cart" />
                   </div>
-                  <div className={styles.expressItemDetails}>
-                    <p className={styles.expressItemTitle}>
-                        Grocery
-                    </p>
+                  <div className={styles.expenseItemDetails}>
+                    <p className={styles.expenseItemTitle}>Grocery</p>
+                    <p className={styles.expenseItemTime}>6.13pm ◦ Belanja di pasar</p>
                   </div>
                 </div>
               </li>
